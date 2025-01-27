@@ -2,6 +2,9 @@
 
 This is not officially supported in any way, shape or form by anyone. *Use this at your own risk!*
 
+I create this fork to fix the trouble with LSB first order and not MSB first ordered datagram as coded in the original version.
+*This could cause troubles at least with speed over ground, latitude/longitude*
+
 This could not have been possible without Thomas Knauf's absolutely indispensible SeaTalk reference found here: http://www.thomasknauf.de/seatalk.htm. Thank you, Thomas, for all the work it must have taken to work out the protocol details! I am in awe.
 
 This should be treated as a device driver. It can be linked into an application or it can be installed as a Linux kernel extension.

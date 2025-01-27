@@ -1,4 +1,4 @@
-# Open-source C library for handling two-way communication over Raymarine's SeaTalk protocol.
+# Open-source C library for handling two-way communication over Raymarine's SeaTalk protocol with latitude/longitude SOG bug fix
 
 This is not officially supported in any way, shape or form by anyone. *Use this at your own risk!*
 

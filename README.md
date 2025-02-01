@@ -4,6 +4,8 @@ This is not officially supported in any way, shape or form by anyone. *Use this 
 
 I create this fork to fix the trouble with LSB first order and not MSB first ordered datagram as coded in the original version.
 *This could cause troubles at least with speed over ground, latitude/longitude*
+I change the method protypes to make them more precise.
+Arduino 16bits environment is supported p.e. to create Arduino Uno application.
 
 This could not have been possible without Thomas Knauf's absolutely indispensible SeaTalk reference found here: http://www.thomasknauf.de/seatalk.htm. Thank you, Thomas, for all the work it must have taken to work out the protocol details! I am in awe.
 
@@ -17,7 +19,6 @@ This should be treated as a device driver. It can be linked into an application 
 
 OR
 
-    #include "boat_status.h"      // there are types defined here used by seatalk_datagram.h
     #include "seatalk_datagram.h" // build or parse raw datagrams to be sent or collected by other means
 
 * to get device status from the SeaTalk bus call get_x_status where &lt;x&gt; is the name of a device (eg autopilot)

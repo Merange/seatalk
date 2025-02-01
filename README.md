@@ -4,6 +4,7 @@ This is not officially supported in any way, shape or form by anyone. *Use this 
 
 I create this fork to fix the trouble with LSB first order and not MSB first ordered datagram as coded in the original version.
 *This could cause troubles at least with speed over ground, latitude/longitude*
+
 I change the method protypes to make them more precise.
 Arduino 16bits environment is supported p.e. to create Arduino Uno application.
 

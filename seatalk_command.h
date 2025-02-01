@@ -4,7 +4,7 @@ int seatalk_command_pending(void);
 int set_lamp_intensity(int level);
 //void cancel_mob(void);
 //void track_keystroke_from_gps(void);
-//void set_countdown_timer(int minutes, int seconds, int hours, int mode);
+void set_countdown_timer(unsigned char hours, unsigned char minutes, unsigned char seconds, unsigned char mode);
 //void acknowledge_alarm(int alarm_type);
 //void mob(void);
 //void maxview_remote_keypress(ST_AUTOPILOT_COMMAND command);

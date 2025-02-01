@@ -10,7 +10,7 @@ timeout get_time(void) {
   #ifdef TESTING
     time_t now;
     time(&now);
-    return now;
+    return (timeout) now;
   #else
     struct timespec now = current_kernel_time();
     return now.tv_sec;

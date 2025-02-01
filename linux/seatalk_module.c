@@ -187,21 +187,21 @@ RAW_IMPLEMENT_STATUS(autopilot, NAME) {\
   return 0;\
 }
 
-BOAT_STATUS(depth_below_transducer_in_feet_times_10, int);
+BOAT_STATUS(depth_below_transducer_in_feet_times_10, short int);
 //BOAT_STATUS(distance_units, DISPLAY_UNIT);
-BOAT_STATUS(apparent_wind_angle, int);
-BOAT_STATUS(apparent_wind_speed_in_knots_times_10, int);
+BOAT_STATUS(apparent_wind_angle, short int);
+BOAT_STATUS(apparent_wind_speed_in_knots_times_10, unsigned short int);
 BOAT_STATUS(turn_direction, TURN_DIRECTION);
-BOAT_STATUS(heading, int);
-BOAT_STATUS(water_speed_in_knots_times_100, int);
-BOAT_STATUS(average_water_speed_in_knots_times_100, int);
-BOAT_STATUS(rudder_position_in_degrees_right, int);
-BOAT_STATUS(course_over_ground, int);
-BOAT_STATUS(speed_over_ground_in_knots_times_100, int);
-BOAT_STATUS(trip_mileage_in_nautical_miles_times_100, int);
-BOAT_STATUS(total_mileage_in_nautical_miles_times_10, int);
-BOAT_STATUS(water_temperature_in_degrees_celsius_times_10, int);
-BOAT_STATUS(compass_variation_in_degrees_west, int);
+BOAT_STATUS(heading, short int);
+BOAT_STATUS(water_speed_in_knots_times_100, unsigned short int);
+BOAT_STATUS(average_water_speed_in_knots_times_100, unsigned short int);
+BOAT_STATUS(rudder_position_in_degrees_right, short int);
+BOAT_STATUS(course_over_ground, short int);
+BOAT_STATUS(speed_over_ground_in_knots_times_100, unsigned short int);
+BOAT_STATUS(trip_mileage_in_nautical_miles_times_100, unsigned long int);
+BOAT_STATUS(total_mileage_in_nautical_miles_times_10, unsigned long int);
+BOAT_STATUS(water_temperature_in_degrees_celsius_times_10, short int);
+BOAT_STATUS(compass_variation_in_degrees_west, short int);
 
 ALARM_STATUS(shallow_water, SHALLOW_WATER);
 ALARM_STATUS(deep_water, DEEP_WATER);
@@ -277,15 +277,15 @@ RAW_IMPLEMENT_SENSOR(sensors, NAME) {\
   return result;\
 }
 
-BOAT_SENSOR(heading, int);
-BOAT_SENSOR(water_speed_in_knots_times_100, int);
-BOAT_SENSOR(apparent_wind_angle, int);
-BOAT_SENSOR(apparent_wind_speed_in_knots_times_10, int);
-BOAT_SENSOR(depth_below_transducer_in_feet_times_10, int);
-BOAT_SENSOR(course_over_ground, int);
-BOAT_SENSOR(speed_over_ground_in_knots_times_100, int);
-BOAT_SENSOR(water_temperature_in_degrees_celsius_times_10, int);
-BOAT_SENSOR(rudder_position_in_degrees_right, int);
+BOAT_SENSOR(heading, short int);
+BOAT_SENSOR(water_speed_in_knots_times_100, unsigned short int);
+BOAT_SENSOR(apparent_wind_angle, short int);
+BOAT_SENSOR(apparent_wind_speed_in_knots_times_10, unsigned short int);
+BOAT_SENSOR(depth_below_transducer_in_feet_times_10, short int);
+BOAT_SENSOR(course_over_ground, short int);
+BOAT_SENSOR(speed_over_ground_in_knots_times_100, unsigned short int);
+BOAT_SENSOR(water_temperature_in_degrees_celsius_times_10, short int);
+BOAT_SENSOR(rudder_position_in_degrees_right, short int);
 
 // commands
 

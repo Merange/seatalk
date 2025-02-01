@@ -6,7 +6,7 @@
 
 int rx_bit_value = 0;
 
-int init_seatalk_hardware_layer(void) {}  // not used here
+int init_seatalk_hardware_layer(void) { return 0; }  // not used here
 void exit_seatalk_hardware_layer(void) {} // not used here
 
 int get_seatalk_hardware_bit_value(void) {

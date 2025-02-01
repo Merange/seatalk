@@ -45,21 +45,21 @@ int set_lamp_intensity(int level) {
   return send_command(build_lamp_intensity(command_datagram, level));
 }
 
-//void cancel_mob(void) {
-//  send_command(build_cancel_mob(command_datagram));
-//}
+void cancel_mob(void) {
+  send_command(build_cancel_mob(command_datagram));
+}
 
 //void track_keystroke_from_gps(void) {
 //  send_command(build_track_keystroke_from_gps(command_datagram));
 //}
 
-//void set_countdown_timer(int hours, minutes, int seconds, int mode) {
-//  send_command(build_countdown_timer(command_datagram, hours, minutes, seconds, mode));
-//}
+void set_countdown_timer(unsigned char hours, unsigned char minutes, unsigned char seconds, unsigned char mode) {
+  send_command(build_countdown_timer(command_datagram, hours, minutes, seconds, mode));
+}
 
-//void acknowledge_alarm(int alarm_type) {
-//  send_command(build_alarm_acknowledgement(command_datagram, alarm_type));
-//}
+void acknowledge_alarm(int alarm_type) {
+  send_command(build_alarm_acknowledgement(command_datagram, alarm_type));
+}
 
 //void mob(void) {
 //  send_command(build_mob_waypoint(command_datagram));

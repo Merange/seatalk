@@ -20,7 +20,7 @@ int receive_datagram_bytes_remaining = 255;
 int tx_bit_number = -1;
 char tx_byte = 0;
 int tx_command_bit = 1;
-char transmit_buffer[256];
+unsigned char transmit_buffer[256];
 int transmit_buffer_position = 0;
 int transmit_datagram_bytes_remaining = 0;
 

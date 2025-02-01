@@ -1,88 +1,61 @@
+#ifndef BOAT_STATUS_H
+#define BOAT_STATUS_H
+
+#include "seatalk_datagram.h"
+
 #define TIME_TO_LIVE 5
 #define HEADING_SIZE 4
 #define FLAG_SIZE 4
 #define MODE_SIZE 10
 #define ANGLE_SIZE 5
 
-#define ALARM_SHALLOW_WATER 0x0001
-#define ALARM_DEEP_WATER 0x0002
-#define ALARM_ANCHOR 0x0004
-#define ALARM_APPARENT_WIND_ANGLE_LOW 0x0008
-#define ALARM_APPARENT_WIND_ANGLE_HIGH 0x0010
-#define ALARM_APPARENT_WIND_SPEED_LOW 0x0020
-#define ALARM_APPARENT_WIND_SPEED_HIGH 0x0040
-#define ALARM_TRUE_WIND_ANGLE_LOW 0x0080
-#define ALARM_TRUE_WIND_ANGLE_HIGH 0x0100
-#define ALARM_TRUE_WIND_SPEED_LOW 0x0200
-#define ALARM_TRUE_WIND_SPEED_HIGH 0x0400
-#define ALARM_AUTOPILOT_OFF_COURSE 0x0800
-#define ALARM_AUTOPILOT_WIND_SHIFT 0x1000
-
 void initialize_status(void);
 
-int get_active_alarms(int *active_alarms);
-void set_active_alarms(int alarms);
+int get_active_alarms(unsigned short int *active_alarms);
+void set_active_alarms(unsigned short int alarms);
 
-int get_depth_below_transducer_in_feet_times_10(int *feet_time_10); // depth in 0.1 foot units
-void set_depth_below_transducer_in_feet_times_10(int feet_times_10);
+int get_depth_below_transducer_in_feet_times_10(short int *feet_time_10); // depth in 0.1 foot units
+void set_depth_below_transducer_in_feet_times_10(short int feet_times_10);
 
-typedef enum { DISTANCE_UNITS_NAUTICAL, DISTANCE_UNITS_STATUTE, DISTANCE_UNITS_METRIC } DISTANCE_UNITS;
-
-//enum DISTANCE_UNITS get_distance_units(void);
-//void set_distance_units(enum DISTANCE_UNITS distance_units);
-
-typedef enum { ENGINE_ID_SINGLE, ENGINE_ID_PORT, ENGINE_ID_STARBOARD } ENGINE_ID;
-
-typedef struct {
-  int rpm;
-  int pitch_percent;
-} ENGINE_STATUS;
+int get_water_temperature_in_degrees_celsius_times_10(short int* celsius_times_10); // temp in 0.1° celcius units
+void set_water_temperature_in_degrees_celsius_times_10(short int celsius_times_10);
 
 int get_engine_status(ENGINE_ID engine_id, ENGINE_STATUS *engine_status);
-void set_engine_rpm(ENGINE_ID engine_id, int rpm);
-void set_engine_prop_pitch_percent(ENGINE_ID engine_id, int prop_pitch_percent);
+void set_engine_rpm(ENGINE_ID engine_id, short int rpm);
+void set_engine_prop_pitch_percent(ENGINE_ID engine_id, short int prop_pitch_percent);
 
-typedef enum { ANGLE_REFERENCE_TRUE, ANGLE_REFERENCE_MAGNETIC, ANGLE_REFERENCE_BOAT } ANGLE_REFERENCE;
+int get_apparent_wind_angle(short int *degrees);
+void set_apparent_wind_angle(short int degrees_right);
+int get_apparent_wind_speed_in_knots_times_10(unsigned short int *knots_times_10);
+void set_apparent_wind_speed_in_knots_times_10(unsigned short int knots_times_10);
 
-int get_apparent_wind_angle(int *degrees);
-void set_apparent_wind_angle(int degrees_right);
-int get_apparent_wind_speed_in_knots_times_10(int *knots_times_10);
-void set_apparent_wind_speed_in_knots_times_10(int knots_times_10);
-
-typedef enum { TURN_DIRECTION_NONE, TURN_DIRECTION_LEFT, TURN_DIRECTION_RIGHT } TURN_DIRECTION;
-
-int get_heading(int *degrees);
-void set_heading(int degrees);
+int get_heading(short int *degrees);
+void set_heading(short int degrees);
 //int get_heading_reference(ANGLE_REFERENCE *referebce);
 //void set_heading_reference(ANGLE_REFERENCE reference);
 int get_turn_direction(TURN_DIRECTION *direction);
 void set_turn_direction(TURN_DIRECTION direction);
-int get_water_speed_in_knots_times_100(int *knots_times_100);
-void set_water_speed_in_knots_times_100(int knots_times_100);
-int get_average_water_speed_in_knots_times_100(int *knots_times_100);
-void set_average_water_speed_in_knots_times_100(int knots_times_100);
-int get_rudder_position_in_degrees_right(int *degrees_right);
-void set_rudder_position_in_degrees_right(int degrees_right);
+int get_water_speed_in_knots_times_100(unsigned short int *knots_times_100);
+void set_water_speed_in_knots_times_100(unsigned short int knots_times_100);
+int get_average_water_speed_in_knots_times_100(unsigned short int *knots_times_100);
+void set_average_water_speed_in_knots_times_100(unsigned short int knots_times_100);
+int get_rudder_position_in_degrees_right(short int*degrees_right);
+void set_rudder_position_in_degrees_right(short int degrees_right);
 
-int get_course_over_ground(int *degrees);
-void set_course_over_ground(int degrees);
+int get_course_over_ground(short int *degrees);
+void set_course_over_ground(short int degrees);
 int get_course_over_ground_reference(ANGLE_REFERENCE *reference);
 void set_course_over_ground_reference(ANGLE_REFERENCE reference);
-int get_speed_over_ground_in_knots_times_100(int *knots_times_100);
-void set_speed_over_ground_in_knots_times_100(int knots_times_100);
-int get_trip_mileage_in_nautical_miles_times_100(int *nautical_miles_times_100);
-void set_trip_mileage_in_nautical_miles_times_100(int nautical_miles_times_100);
-int get_total_mileage_in_nautical_miles_times_10(int *nautical_miles_times_10);
-void set_total_mileage_in_nautical_miles_times_10(int nautical_miles_times_10);
-
-int get_water_temperature_in_degrees_celsius_times_10(int *degrees_celsius_times_10);
-void set_water_temperature_in_degrees_celsius_times_10(int degrees_celsius_times_10);
+int get_speed_over_ground_in_knots_times_100(unsigned short int *knots_times_100);
+void set_speed_over_ground_in_knots_times_100(unsigned short int knots_times_100);
+int get_trip_mileage_in_nautical_miles_times_100(unsigned long int *nautical_miles_times_100);
+void set_trip_mileage_in_nautical_miles_times_100(unsigned long int nautical_miles_times_100);
+int get_total_mileage_in_nautical_miles_times_10(unsigned long int *nautical_miles_times_10);
+void set_total_mileage_in_nautical_miles_times_10(unsigned long int nautical_miles_times_10);
 
 //int get_lamp_intensity(int *intensity);
 //void set_lamp_intensity(int intensity);
 
-typedef enum { LATITUDE_HEMISPHERE_NORTH, LATITUDE_HEMISPHERE_SOUTH } LATITUDE_HEMISPHERE;
-typedef enum { LONGITUDE_HEMISPHERE_WEST, LONGITUDE_HEMISPHERE_EAST } LONGITUDE_HEMISPHERE;
 typedef struct {
   LATITUDE_HEMISPHERE hemisphere_latitude;
   int degrees_latitude;
@@ -93,10 +66,10 @@ typedef struct {
 } POSITION;
 
 int get_position(POSITION *position);
-void set_position_latitude(LATITUDE_HEMISPHERE hemisphere, int degrees, int minutes_times_1000);
-void set_position_longitude(LONGITUDE_HEMISPHERE hemisphere, int degrees, int minutes_times_1000);
-int get_compass_variation_in_degrees_west(int *degrees_west);
-void set_compass_variation_in_degrees_west(int degrees_west);
+void set_position_latitude(LATITUDE_HEMISPHERE hemisphere, unsigned char degrees, unsigned short int minutes_times_1000);
+void set_position_longitude(LONGITUDE_HEMISPHERE hemisphere, unsigned char degrees, unsigned short int minutes_times_1000);
+int get_compass_variation_in_degrees_west(short int*degrees_west);
+void set_compass_variation_in_degrees_west(short int degrees_west);
 
 typedef struct {
   int signal_quality_valid;
@@ -114,12 +87,12 @@ typedef struct {
 } GPS_FIX_QUALITY;
 
 int get_gps_fix_quality(GPS_FIX_QUALITY *fix_quality);
-void set_gps_fix_signal_quality(int signal_quality);
-void set_gps_fix_position_error(int position_error);
-void set_gps_fix_antenna_height(int antenna_height);
-void set_gps_fix_satellite_count(int satellite_count, int geoseparation);
-void set_gps_fix_dgps_age(int dgps_age);
-void set_gps_fix_dgps_station_id(int dgps_station_id);
+void set_gps_fix_signal_quality(short int signal_quality);
+void set_gps_fix_position_error(short int  position_error);
+void set_gps_fix_antenna_height(short int  antenna_height);
+void set_gps_fix_satellite_count(short int  satellite_count, short int  geoseparation);
+void set_gps_fix_dgps_age(short int  dgps_age);
+void set_gps_fix_dgps_station_id(short int  dgps_station_id);
 
 typedef struct {
   int waypoint_name_valid;
@@ -136,37 +109,36 @@ typedef struct {
 
 int get_navigation(NAVIGATION_STATUS *navigation_status);
 void set_navigation_waypoint_name(char *name);
-void set_navigation_waypoint_position_latitude(LATITUDE_HEMISPHERE hemisphere, int degrees, int minutes_times_1000);
-void set_navigation_waypoint_position_longitude(LONGITUDE_HEMISPHERE hemisphere, int degrees, int minutes_times_1000);
-void set_navigation_waypoint_bearing_and_range_in_nautical_miles_times_100(int degrees, int nautical_miles_times_100);
+void set_navigation_waypoint_position_latitude(LATITUDE_HEMISPHERE hemisphere, unsigned char degrees, unsigned short int minutes_times_1000);
+void set_navigation_waypoint_position_longitude(LONGITUDE_HEMISPHERE hemisphere, unsigned char degrees, unsigned short int minutes_times_1000);
+void set_navigation_waypoint_bearing_and_range_in_nautical_miles_times_100(short int degrees, unsigned long int nautical_miles_times_100);
 void set_navigation_waypoint_bearing_reference(ANGLE_REFERENCE angle_reference);
-void set_navigation_cross_track_error_in_nautical_miles_times_100(int nautical_miles_times_100);
+void set_navigation_cross_track_error_in_nautical_miles_times_100(unsigned long int nautical_miles_times_100);
 
 typedef struct {
-  int year;
-  int month;
-  int day;
-  int hour;
-  int minute;
-  int second;
+  unsigned short int year;
+  unsigned char month;
+  unsigned char day;
+  unsigned char hour;
+  unsigned char minute;
+  unsigned char second;
 } DATE_AND_TIME;
 
 int get_gmt_date_and_time(DATE_AND_TIME *gmt_date_and_time);
-void set_gmt_date(int year, int month, int day);
-void set_gmt_time(int hour, int minute, int second);
-
-typedef enum { AUTOPILOT_MODE_STANDBY, AUTOPILOT_MODE_AUTO, AUTOPILOT_MODE_VANE, AUTOPILOT_MODE_TRACK } AUTOPILOT_MODE;
-typedef enum { AUTOPILOT_RESPONSE_LEVEL_AUTOMATIC_DEADBAND, AUTOPILOT_RESPONSE_LEVEL_MINIMUM_DEADBAND } AUTOPILOT_RESPONSE_LEVEL;
+void set_gmt_date(unsigned short int year, unsigned char month, unsigned char day);
+void set_gmt_time(unsigned char hour, unsigned char minute, unsigned char second);
 
 typedef struct {
-  int target_heading;
+  short int target_heading;
   AUTOPILOT_MODE mode;
   AUTOPILOT_RESPONSE_LEVEL response_level;
   int rudder_gain;
 } AUTOPILOT_STATUS;
 
 int get_autopilot(AUTOPILOT_STATUS *new_ap_status);
-void set_autopilot_target_heading(int degrees);
+void set_autopilot_target_heading(short int degrees);
 void set_autopilot_mode(AUTOPILOT_MODE mode);
 //void set_autopilot_response_level(AUTOPILOT_RESPONSE_LEVEL response_level);
 //void set_autopilot_rudder_gain(int rudder_gain);
+
+#endif

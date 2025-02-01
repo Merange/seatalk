@@ -35,6 +35,8 @@ void initiate_seatalk_transmitter(void);
 //   any other value -- fire timer again after this many bit durations
 int seatalk_transmit_bit(void);
 
+int seatalk_can_transmit(void);
+
 typedef enum {
   BUS_STATE_IDLE,
   BUS_STATE_RECEIVING,

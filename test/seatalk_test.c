@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <string.h>
 #include <stdlib.h>
+
 #include "test.h"
 #include "../seatalk_transport_layer.h"
 #include "seatalk_transport_layer_test.h"
@@ -9,6 +10,8 @@
 #include "boat_sensor_test.h"
 #include "seatalk_command_test.h"
 #include "seatalk_protocol_test.h"
+
+char test_name[256];
 
 void main() {
   printf("Running tests...\n");
@@ -31,5 +34,5 @@ void main() {
   // test sensor values generate correct datagrams to transmit
   // test commands generate correct datagrams to transmit
   test_seatalk_protocol();
-  printf("Tests completed with %d assertions (%d failures)\n", total_assertions(), total_failures());
+  printf("\n-----> Tests completed with %d assertions (%d failures)\n", total_assertions(), total_failures());
 }

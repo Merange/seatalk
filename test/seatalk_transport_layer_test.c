@@ -1,9 +1,15 @@
 #include <stdio.h>
 #include "defines.h"
 #include "test.h"
-#include "../seatalk_transport_layer.c"
+#include "../seatalk_transport_layer.h"
 #include "seatalk_transport_layer_test.h"
 #include "seatalk_hardware_layer.h"
+
+extern int tx_bit_number;
+extern unsigned char transmit_buffer[256];
+extern int transmit_buffer_position;
+extern int transmit_datagram_bytes_remaining;
+extern BUS_STATE bus_state;
 
 /*
 int simulate_transmit_character(char byte, int command_bit, char receive_byte, int receive_command_bit) {
@@ -84,7 +90,7 @@ TEST(bus_returns_to_idle_state)
   // 10 bit cycles
 // receive a character to force wait_for_idle
   refute(simulate_receive_character(0x84, 1), "simulate_receive_character should complete successfully");
-  assert_equal_int((int)BUS_STATE_WAIT_FOR_IDLE, (int)get_bus_state(),
+  assert_equal_char((int)BUS_STATE_WAIT_FOR_IDLE, (int)get_bus_state(),
     "bus_state should be wait_for_idle after byte received");
   refute(seatalk_can_transmit(), "seatalk_can_transmit() should return false");
   refute(seatalk_transmit_bit(), "seatalk_transmit_bit() should have returned FALSE");

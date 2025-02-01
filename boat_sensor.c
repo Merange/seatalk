@@ -48,15 +48,15 @@ void update_##NAME##_sensor(TYPE NAME) {\
   wake_transmitter();\
 }
 
-DEFINE_SENSOR(heading, int);
-DEFINE_SENSOR(water_speed_in_knots_times_100, int);
-DEFINE_SENSOR(apparent_wind_angle, int);
-DEFINE_SENSOR(apparent_wind_speed_in_knots_times_10, int);
-DEFINE_SENSOR(depth_below_transducer_in_feet_times_10, int);
-DEFINE_SENSOR(course_over_ground, int);
-DEFINE_SENSOR(speed_over_ground_in_knots_times_100, int);
-DEFINE_SENSOR(water_temperature_in_degrees_celsius_times_10, int);
-DEFINE_SENSOR(rudder_position_in_degrees_right, int);
+DEFINE_SENSOR(heading, short int);
+DEFINE_SENSOR(water_speed_in_knots_times_100, unsigned short int);
+DEFINE_SENSOR(apparent_wind_angle, short int);
+DEFINE_SENSOR(apparent_wind_speed_in_knots_times_10, unsigned short int);
+DEFINE_SENSOR(depth_below_transducer_in_feet_times_10, short int);
+DEFINE_SENSOR(course_over_ground, short int);
+DEFINE_SENSOR(speed_over_ground_in_knots_times_100, unsigned short int);
+DEFINE_SENSOR(water_temperature_in_degrees_celsius_times_10, short int);
+DEFINE_SENSOR(rudder_position_in_degrees_right, short int);
 
 void initialize_sensors(void) {
   sensors_initialized = 1;

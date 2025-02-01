@@ -1,32 +1,28 @@
 #include "test.h"
+#include "../boat_sensor.h"
 #include "boat_status_test.h"
-#include "../boat_status.c"
 
-#define int_TEST_VALUE 137
-#define TURN_DIRECTION_TEST_VALUE TURN_DIRECTION_RIGHT
-
-#define assert_equal_TURN_DIRECTION(REF_VALUE, TEST_VALUE, MESSAGE) assert_equal_int(REF_VALUE, TEST_VALUE, MESSAGE)
 
 #define TEST_GET_SET_INVALIDATE_TIMEOUT(STATUS_NAME, TYPE) TEST(set_and_get_##STATUS_NAME)\
   TYPE value = TYPE##_TEST_VALUE;\
-  TYPE got_value;\
+  TYPE got_value=0;\
   refute(get_##STATUS_NAME(&got_value) == 0, #STATUS_NAME " timeout should have been invalid on initialization");\
   set_##STATUS_NAME(value);\
-  assert_equal_int(0, get_##STATUS_NAME(&got_value), "get_" #STATUS_NAME "() returnd without valid value (timeout expired)");\
+  assert_equal_##TYPE(0, get_##STATUS_NAME(&got_value), "get_" #STATUS_NAME "() returnd without valid value (timeout expired)");\
   assert_equal_##TYPE(TYPE##_TEST_VALUE, got_value, "get_" #STATUS_NAME "() value does not match value set");\
 }
 
-TEST_GET_SET_INVALIDATE_TIMEOUT(heading, int);
+TEST_GET_SET_INVALIDATE_TIMEOUT(heading, int16);
 TEST_GET_SET_INVALIDATE_TIMEOUT(turn_direction, TURN_DIRECTION);
-TEST_GET_SET_INVALIDATE_TIMEOUT(water_speed_in_knots_times_100, int);
-TEST_GET_SET_INVALIDATE_TIMEOUT(average_water_speed_in_knots_times_100, int);
-TEST_GET_SET_INVALIDATE_TIMEOUT(rudder_position_in_degrees_right, int)
-TEST_GET_SET_INVALIDATE_TIMEOUT(course_over_ground, int);
-TEST_GET_SET_INVALIDATE_TIMEOUT(speed_over_ground_in_knots_times_100, int);
-TEST_GET_SET_INVALIDATE_TIMEOUT(trip_mileage_in_nautical_miles_times_100, int);
-TEST_GET_SET_INVALIDATE_TIMEOUT(total_mileage_in_nautical_miles_times_10, int);
-TEST_GET_SET_INVALIDATE_TIMEOUT(water_temperature_in_degrees_celsius_times_10, int);
-TEST_GET_SET_INVALIDATE_TIMEOUT(compass_variation_in_degrees_west, int);
+TEST_GET_SET_INVALIDATE_TIMEOUT(water_speed_in_knots_times_100, uint16);
+TEST_GET_SET_INVALIDATE_TIMEOUT(average_water_speed_in_knots_times_100, uint16);
+TEST_GET_SET_INVALIDATE_TIMEOUT(rudder_position_in_degrees_right, int16)
+TEST_GET_SET_INVALIDATE_TIMEOUT(course_over_ground, int16);
+TEST_GET_SET_INVALIDATE_TIMEOUT(speed_over_ground_in_knots_times_100, uint16);
+TEST_GET_SET_INVALIDATE_TIMEOUT(trip_mileage_in_nautical_miles_times_100, uint32);
+TEST_GET_SET_INVALIDATE_TIMEOUT(total_mileage_in_nautical_miles_times_10, uint32);
+TEST_GET_SET_INVALIDATE_TIMEOUT(water_temperature_in_degrees_celsius_times_10, int16);
+TEST_GET_SET_INVALIDATE_TIMEOUT(compass_variation_in_degrees_west, int16);
 
 // engine status
 
@@ -98,10 +94,10 @@ TEST(set_and_get_navigation_status)
   int degrees_latitude = 12, minutes_latitude_times_1000 = 34567;
   LONGITUDE_HEMISPHERE hemisphere_longitude = LONGITUDE_HEMISPHERE_EAST;
   int degrees_longitude = 123, minutes_longitude_times_1000 = 4567;
-  int waypoint_bearing;
-  ANGLE_REFERENCE waypoint_bearing_reference;
-  int waypoint_range_in_nautical_miles_times_100;
-  int cross_track_error_in_nautical_miles_times_100;
+  int waypoint_bearing = 159;
+  ANGLE_REFERENCE waypoint_bearing_reference = 171;
+  int waypoint_range_in_nautical_miles_times_100 = 800;
+  int cross_track_error_in_nautical_miles_times_100 = 100;
   NAVIGATION_STATUS navigation_status;
   refute(get_navigation(&navigation_status) == 0, "navigation timeout should have been invalid on initialization");
   set_navigation_waypoint_name(waypoint_name);
@@ -125,7 +121,7 @@ TEST(set_and_get_navigation_status)
 }
 
 TEST(set_and_get_gmt_date_and_time)
-  int year = 1778, month = 6, day = 10, hour = 12, minute = 20, second = 37;
+  int year = 2078, month = 6, day = 10, hour = 12, minute = 20, second = 37;
   DATE_AND_TIME gmt_date_and_time;
   refute(get_gmt_date_and_time(&gmt_date_and_time) == 0, "gmt_date_and_time timeout should have been invalid on installation");
   set_gmt_date(year, month, day);

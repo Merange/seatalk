@@ -31,10 +31,34 @@ void refute(int true_or_false, char *explanation) {
   _assert(!true_or_false, "expected FALSE but found TRUE", explanation);
 }
 
-void assert_equal_int(int reference, int test, char *explanation) {
-  char failure_message[256];
-  sprintf(failure_message, "expected %d but found %d", reference, test);
-  _assert(reference == test, failure_message, explanation);
+void assert_equal_char(char reference, char test, char* explanation) {
+    char failure_message[256];
+    sprintf(failure_message, "expected %d but found %d", reference, test);
+    _assert(reference == test, failure_message, explanation);
+}
+
+void assert_equal_int(int reference, int test, char* explanation) {
+    char failure_message[256];
+    sprintf(failure_message, "expected %d but found %d", reference, test);
+    _assert(reference == test, failure_message, explanation);
+}
+
+void assert_equal_int16(short int reference, short int test, char* explanation) {
+    char failure_message[256];
+    sprintf(failure_message, "expected %d but found %d", reference, test);
+    _assert(reference == test, failure_message, explanation);
+}
+
+void assert_equal_uint16(unsigned short int reference, unsigned short int test, char* explanation) {
+    char failure_message[256];
+    sprintf(failure_message, "expected %d but found %d", reference, test);
+    _assert(reference == test, failure_message, explanation);
+}
+
+void assert_equal_uint32(unsigned long int reference, unsigned long int test, char* explanation) {
+    char failure_message[256];
+    sprintf(failure_message, "expected %d but found %d", reference, test);
+    _assert(reference == test, failure_message, explanation);
 }
 
 void assert_equal_string(char *reference, char *test, char *explanation) {

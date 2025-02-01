@@ -1,8 +1,11 @@
 #include <stdio.h>
 #include "defines.h"
 #include "test.h"
+#include "../seatalk_datagram.h"
+#include "../seatalk_command.h"
 #include "seatalk_command_test.h"
-#include "../seatalk_command.c"
+
+extern int command_datagram_bytes_remaining;
 
 void clear_all_commands() {
   command_datagram_bytes_remaining = 0;

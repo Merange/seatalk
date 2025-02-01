@@ -35,6 +35,8 @@ If using this in a microcontroller you should be able to write your own MCU-spec
 
 ## Using the Linux kernel extension
 
+*Not tested after update*
+
 This has been tested on a Raspberry Pi. There is nothing in the source code that is obviously RPi-specific so in theory it should compile for any Linux machine that provides you with GPIO pins.
 
 The Linux kernel extension (once compiled) makes this very easy. You 

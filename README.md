@@ -7,7 +7,7 @@ I create this fork to fix the trouble with LSB first order and not MSB first ord
 
 I change the method protypes to make them more precise.
 
-Arduino 16bits environment is supported p.e. to create Arduino Uno application. Just rename the .C files into .Cpp and add it to the project or the *librairies* folder
+Arduino 16bits environment is supported p.e. to create Arduino Uno application.
 
 This could not have been possible without Thomas Knauf's absolutely indispensible SeaTalk reference found here: http://www.thomasknauf.de/seatalk.htm. Thank you, Thomas, for all the work it must have taken to work out the protocol details! I am in awe.
 
@@ -34,6 +34,13 @@ To use it this way you will need to provide a seatalk_hardware_layer.c file that
 If using this under Linux you might want to consider using the kernel extension method instead as it reduces SeaTalk communications to file operations. In any case, under Linux this will need to be run as root in order to get access to the GPIO pins and interrupt handler.
 
 If using this in a microcontroller you should be able to write your own MCU-specific seatalk_hardware_layer.c file to generate an interrupt when the start bit is received and to start the receive and transmit timers as needed.
+
+## Using for Arduino development environment
+
+To use on Arduino Uno or Mega, a very usefull library can be used to manage 9 bits serial data in the *Seatalk-Autopilot-Remote-Control* project.
+
+If you have trouble with C method names, just rename the .C files into .Cpp and add then to the project folder or in the Arduino *librairies* folder
+
 
 ## Using the Linux kernel extension
 

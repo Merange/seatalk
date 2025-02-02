@@ -7,7 +7,7 @@ I create this fork to fix the trouble with LSB first order and not MSB first ord
 
 I change the method protypes to make them more precise.
 
-Arduino 16bits environment is supported p.e. to create Arduino Uno application.
+Arduino 16bits environment is supported p.e. to create Arduino Uno application. Just rename the .C file to .Cpp and add it to the project or the *librairies* folder
 
 This could not have been possible without Thomas Knauf's absolutely indispensible SeaTalk reference found here: http://www.thomasknauf.de/seatalk.htm. Thank you, Thomas, for all the work it must have taken to work out the protocol details! I am in awe.
 
